@@ -1,0 +1,46 @@
+﻿.affix-top {
+	display:block;
+	width:inherit;
+	position:absolute;
+}
+
+.affix {
+	display:block;
+	width:inherit;
+	position:fixed;
+	top:20px;
+}
+
+.list-group.nav li {
+	padding:0px;
+}
+.list-group.nav li a,
+.list-group.nav li a:active,
+.list-group.nav li a:hover {
+	color:inherit;
+	margin:0px;
+}
+
+.list-group.nav li.active a {
+	color:#fff ;
+}
+
+.list-group.nav li.active a:hover {
+	color:#111;
+}
+
+.panel-body {
+	min-height:400px;
+}
+
+.panel-body > h5.b {
+	font-weight:bold;	
+}
+
+.panel-body tr td:first-child,
+.panel-body tr td.first {
+	font-weight:bold;
+	overflow:visible;
+	width:1%; 
+	white-space:nowrap;
+}

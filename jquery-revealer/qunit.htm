@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Password Revealer - QUnit Tests</title>
+	<link href="Content/bootstrap.css" rel="stylesheet" />
+	<link href="Content/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="Content/qunit-1.14.0.css" rel="stylesheet" />
+	<link href="Content/font-awesome.css" rel="stylesheet" />
+
+	<style type="text/css">
+		.hidey-hide {
+			display: none !important;
+		}
+	</style>
+
+	<script src="Scripts/jquery-1.11.3.js"></script>
+	<script src="Scripts/qunit-1.14.0.js"></script>
+	<script src="Scripts/password-revealer.1.0.1.js"></script>
+	<script src="Scripts/project-tests.js"></script>
+
+</head>
+<body>
+	<h1 id="qunit-header">Password Revealer - QUnit Tests</h1>
+	<h2 id="qunit-banner"></h2>
+	<div id="qunit-testrunner-toolbar"></div>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	<div id="qunit-fixtures" style="color:black;">
+
+		<!-- Markup for tests -->
+		<hr />
+
+		<form id="test1">
+			<strong>Testing default setup, with multiple fields to one button</strong><br />
+			<input type="password" id="ex1_pwd1" name="ex1pwd1" /><br />
+			<input type="password" id="ex1_pwd2" name="ex1pwd2" /><br />
+			<button type="button" data-reveal="true">Reveal Passwords</button>
+		</form>
+		<hr />
+
+		<form id="test2">
+			<strong>Testing multiple fields and multiple buttons</strong><br />
+			<input type="password" id="ex2_pwd1" name="ex2pwd1" />
+			<button type="button" id="ex2_btn1" data-reveal="true" data-reveal-target="#ex2_pwd1">Reveal Password</button><br />
+			<input type="password" id="ex2_pwd2" name="ex2pwd2" />
+			<button type="button" id="ex2_btn2" data-reveal="true" data-reveal-target="#ex2_pwd2">Reveal Password</button>
+		</form>
+		<hr />
+		<form id="test3">
+			<strong>Testing mode ='click'</strong><br />
+			<input type="password" id="ex3" name="ex3" />
+			<button type="button" id="ex3_btn" data-reveal="true" data-reveal-mode="click">Reveal password</button>
+		</form>
+
+		<hr />
+		<form id="test4">
+			<strong>Testing default view ='text'</strong><br />
+			<input type="password" id="ex4" name="ex4" />
+			<button type="button" id="ex4_btn" data-reveal="true" data-reveal-view="text" data-reveal-mode="click">Reveal password</button>
+		</form>
+
+		<hr />
+		<form id="test5">
+			<!-- need a separate page to test this, as it adds generic code to the <head>-->
+			<strong>with event handlers</strong><br />
+			<input type="password" id="ex5" name="ex5" />
+			<button type="button" id="ex5_btn" >Reveal password</button><br />
+			<div><span id="messagebox"></span>&nbsp;</div>
+			<script>
+				$(function () {
+					$('#ex5_btn').passwordRevealer({
+						target: '#ex5'
+						, onchange: function (e, ui) {
+							$('#messagebox').html("onchange event: " + ui.view);
+						}
+						, oncreate: function (e, ui) {
+							$('#messagebox').html("created");
+						}
+					})
+				});
+			</script>
+		</form>
+
+		<hr />
+		<form id="test6">
+			<strong>Testing use of font-awesome classed</strong><br />
+			<input type="password" id="ex6" name="ex6" />
+			<button type="button" id="ex6_btn"
+					data-reveal="true"
+					data-reveal-iconclassselector="fa"
+					data-reveal-passwordviewiconclass="fa-eye"
+					data-reveal-textboxviewiconclass="fa-eye-slash"
+					data-reveal-hiddenCssClass="hidey-hide"
+					>
+				Reveal password
+			</button>
+		</form>
+	</div>
+</body>
+</html>
